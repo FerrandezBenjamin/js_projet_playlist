@@ -5,7 +5,7 @@ $filmList = $.get('./playlist.txt', function(data)
     {
         $('button').click(function()
         {
-                $("li").each(function()
+                $("li").each(function(index, element)
                 {
                     console.log(datasplited);
                 });
