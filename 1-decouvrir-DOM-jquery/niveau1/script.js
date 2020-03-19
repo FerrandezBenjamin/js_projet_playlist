@@ -1,19 +1,21 @@
 $(document).ready(function()
 {
-    $('button').click(function()
-    {
-         $filmList = $.get('./playlist.txt', function(data)
-         {
-             var datasplited = (data.split('\n'));
-             $.each(datasplited,function(index, element)
-             {
-                 alert( index + ":" + element);
-                   console.log(datasplited);
-             });
-        });
-                
+        {
+            $('button').click(function()
+            {
+                $('#list').empty();
+                filmList = [];
+                $filmList = $.get('./playlist.txt', function(data)
+                {
+                    var datasplited = (data.split('\n'));
+                    $.each(datasplited,function(index, element)
+                    {
+                        $("#list").append("<li>"+element+"</li>"+'</html>'); 
+                    });
+                });       
+            });
+        }
     });
-});
 
 
 // $filmList = $.get('./playlist.txt', function(data)
