@@ -5,9 +5,9 @@ $(document).ready(function()
          $filmList = $.get('./playlist.txt', function(data)
          {
              var datasplited = (data.split('\n'));
-             $.each(datasplited, function(index, element)
+             $.each(datasplited,function(index, value)
              {
-                 alert( index + ":" + element);
+                 alert( index + ":" + value);
                    console.log(datasplited);
              });
         });
