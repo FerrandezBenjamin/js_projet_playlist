@@ -17,19 +17,26 @@ $(document).ready(function()
     });        
 });
 
-    // var i = index;
-    // var n = name;
-    // var d = duree;
-
 function htmlDivElement(element)
 {
-    return '<div class ="divFilm">'+element+'</div>';
+     var global = '<div class ="divFilm">'+ 
+     '<div class ="divIndex">'+element[0]+'</div>' + 
+     '<div class ="divTitle">'+element[1]+'</div></div>';
+     return global; 
 }
  
 function splitFile(data)
 {
-    return data.split('\n');
-    return data.split(',');
+    resultat = [];
+    var exemple = data.split('\n');
+        exemple.forEach(element =>
+            {
+                var tableauLigne = element.split(',');
+                 resultat.push(tableauLigne);
+             } );
+    console.log(resultat);
+    return resultat;
+    
 }
 
 function createMovie(i, n, d){
@@ -47,3 +54,8 @@ function addMovie(m){
   listOfMovie.push(m);
 
 }
+
+
+
+
+
