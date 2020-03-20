@@ -1,41 +1,47 @@
 var listOfMovie = [];
 
-$(document).ready(function(){
 
-      // completer le code ici
-
+$(document).ready(function()
+{
+    $('button').click(function()
+    {
+        $('#list ul').empty();
+        listOfMovie = [];
+        $.get('./playlist.txt', function(data)
+        {
+            $.each(splitFile(data),function(_index, element)
+            {
+                $('#list ul').append(htmlDivElement(element));
+            });
+        });       
+    });        
 });
+  
 
 
-function htmlDivElement(movie){
-
-  var html = "";
-// completer le code ici
-  return html;
-
+function htmlDivElement(element)
+{
+    return '<div class ="divFilm">'+element+'</div>';
+}
+ 
+function splitFile(data)
+{
+    return data.split('\n');
+    return data.split(',');
 }
 
 function createMovie(i, n, d){
 
-  var movie = {};
+  var movie = { i:index,
+                name:titreFilm,
+                duree:tempsFilm};
 
-// completer le code ici
   return movie;
 }
 
-function splitFile(data){
-  // completer le code ici
-}
 
 function addMovie(m){
 
   listOfMovie.push(m);
 
 }
-    
-
-
-
-
-
-
