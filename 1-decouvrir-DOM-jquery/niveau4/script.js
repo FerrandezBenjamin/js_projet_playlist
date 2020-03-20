@@ -1,36 +1,56 @@
 var listOfMovie = [];
 
-$(document).ready(function(){
-// A completer
+
+$(document).ready(function()
+{
+    $('button'+ '#refresh').click(function()
+    {
+        $('#list ul').empty();
+        listOfMovie = [];
+        $.get('./playlist.txt', function(data)
+        {
+            $.each(splitFile(data),function(index, element)
+            {
+                $('#list ul').append(htmlDivElement(element));
+            });
+        });       
+    });        
 });
 
-
-
-function htmlDivElement(movie){
- // A completer
-}
-
-function createPlayCallback(movie){
-// A completer
+function htmlDivElement(element)
+{
+     var global = '<div class ="divFilm">'+ 
+     '<div class ="divIndex">'+element[0]+'</div>' + 
+     '<div class ="divTitle">'+element[1]+'</div></div>';
+     return global; 
 }
  
-function createMovie(i, n, d){
-// A completer
+function splitFile(data)
+{
+    resultat = [];
+    var exemple = data.split('\n');
+        exemple.forEach(element =>
+            {
+                var tableauLigne = element.split(',');
+                 resultat.push(tableauLigne);
+             } );
+    console.log(resultat);
+    return resultat;
+    
 }
 
-function splitFile(data){ 
-// A completer
+function createMovie(i, n, d){
+
+  var movie = { i:index,
+                name:titreFilm,
+                duree:tempsFilm};
+
+  return movie;
 }
+
 
 function addMovie(m){
 
   listOfMovie.push(m);
 
 }
-    
-
-
-
-
-
-
