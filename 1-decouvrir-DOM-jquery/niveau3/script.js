@@ -9,15 +9,17 @@ $(document).ready(function()
         listOfMovie = [];
         $.get('./playlist.txt', function(data)
         {
-            $.each(splitFile(data),function(_index, element)
+            $.each(splitFile(data),function(index, element)
             {
                 $('#list ul').append(htmlDivElement(element));
             });
         });       
     });        
 });
-  
 
+    // var i = index;
+    // var n = name;
+    // var d = duree;
 
 function htmlDivElement(element)
 {
