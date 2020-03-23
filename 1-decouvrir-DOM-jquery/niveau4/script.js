@@ -1,5 +1,5 @@
 var listOfMovie = [];
-
+// var boutonPlay;
 
 $(document).ready(function()
 {
@@ -12,14 +12,29 @@ $(document).ready(function()
             $.each(splitFile(data),function(index, element)
             {
                 $('#list ul').append(htmlDivElement(element));
+                $('#film'+ element[0]).click(function()
+                {
+                    if (btn.value === 'Demarrer')
+                        {
+                        btn.value = 'Stop';
+                        } 
+                    else 
+                        {
+                        btn.value = 'Demarrer';
+                        }
+                    
+                });
             });
         });       
-    });        
+    });      
 });
 
 function htmlDivElement(element)
 {
-     var global = '<div class ="divFilm">'+ 
+
+     var monId = 'film'+element[0];
+     var global = '<div class ="divFilm">'+
+     '<div class ="buttonPlay"><input type ="button" id ="'+monId+'" value ="Demarrer"></div>' + 
      '<div class ="divIndex">'+element[0]+'</div>' + 
      '<div class ="divTitle">'+element[1]+'</div></div>';
      return global; 
@@ -39,18 +54,18 @@ function splitFile(data)
     
 }
 
-function createMovie(i, n, d){
+// function createMovie(i, n, d){
 
-  var movie = { i:index,
-                name:titreFilm,
-                duree:tempsFilm};
+//   var movie = { i:index,
+//                 name:titreFilm,
+//                 duree:tempsFilm};
 
-  return movie;
-}
+//   return movie;
+// }
 
 
-function addMovie(m){
+// function addMovie(m){
 
-  listOfMovie.push(m);
+//   listOfMovie.push(m);
 
-}
+// }
