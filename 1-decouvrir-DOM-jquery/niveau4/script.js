@@ -5,24 +5,24 @@ $(document).ready(function()
 {
     $('button'+ '#refresh').click(function()
     {
-        $('#list ul').empty();
+        $('#list').empty();
         listOfMovie = [];
         $.get('./playlist.txt', function(data)
         {
             $.each(splitFile(data),function(index, element)
             {
-                $('#list ul').append(htmlDivElement(element));
+                $('#list').append(htmlDivElement(element));
                 $('#film'+ element[0]).click(function()
                 {
-                    if (btn.value === 'Demarrer')
+                    if ($(this).val() == 'Demarrer')
                         {
-                        btn.value = 'Stop';
+                        $(this).val('Stop');
+                        console.log(element);
                         } 
                     else 
                         {
-                        btn.value = 'Demarrer';
+                        $(this).val('Demarrer');
                         }
-                    
                 });
             });
         });       
@@ -33,8 +33,8 @@ function htmlDivElement(element)
 {
 
      var monId = 'film'+element[0];
-     var global = '<div class ="divFilm">'+
-     '<div class ="buttonPlay"><input type ="button" id ="'+monId+'" value ="Demarrer"></div>' + 
+     var global = '<div class="col-4"><div class ="divFilm">'+
+     '<div class="btn btn-outline-dark"><input type ="button" id ="'+monId+'" value ="Demarrer"></div>' + 
      '<div class ="divIndex">'+element[0]+'</div>' + 
      '<div class ="divTitle">'+element[1]+'</div></div>';
      return global; 
